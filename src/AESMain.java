@@ -1,4 +1,7 @@
+import java.io.BufferedReader;
 import java.io.Console;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -25,7 +28,7 @@ public class AESMain {
 		String trybSzyfrowania = "OFB";
 		String hasloDoKeystora = "ala ma kota";
 		String aliasHasla = "mojAlias";
-		String sciezkaDoKeyStore = " D:\\eclipse\\Semestr4\\AES\\keyStore.ks";
+		String sciezkaDoKeyStore = "D:\\eclipse\\Semestr4\\AES\\keyStore.ks";
 		// Console console = System.console();
 		// console.printf("Podaj tryb szyfrowania np. OFB lub CTR \n");
 		// String trybSzyfrowania = console.readLine();
@@ -41,11 +44,14 @@ public class AESMain {
 		// String sciezkaDoKeyStore = "
 		// D:\eclipse\Semestr4\KryptographyLista1\keyStore.ks";
 
-		String wiadomosc = AES.oczytZPlikuWiadomosci();
+		
+		String plikZWiadomoscia = "D:\\eclipse\\Semestr4\\Graf\\vertexes.txt";
+		String wiadomosc = AES.oczytZPlikuWiadomosci(plikZWiadomoscia);
+		
 		byte[] kryptogram = AES.zakoduj(wiadomosc, AES.pobierzKlucz(
 				sciezkaDoKeyStore, new String(aliasHasla), new String(
 						hasloDoKeystora)), trybSzyfrowania);
-		AES.zapiszZakodowanaWiadomoscDoPilku(kryptogram);
+		AES.zapiszZakodowanaWiadomoscDoPilku(kryptogram,  plikZWiadomoscia);
 
 		byte[] zdekodowanyTekst = AES.dekoduj(kryptogram, AES.pobierzKlucz(
 				sciezkaDoKeyStore, new String(aliasHasla), new String(

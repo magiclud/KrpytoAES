@@ -27,9 +27,8 @@ public class AES {
 	static byte[] dekoduj(byte[] kryptogram, Key klucz, String trybSzyfrowania) {
 
 		try {
-			IvParameterSpec ivSpec = new IvParameterSpec(new byte[16]);// wektor
-																		// inicjujacy
-
+		//wektor inicjujacy
+			IvParameterSpec ivSpec = new IvParameterSpec(new byte[16]);
 			Cipher cipher = Cipher.getInstance("AES/" + trybSzyfrowania
 					+ "/NoPadding", "BC");
 			cipher.init(Cipher.DECRYPT_MODE, klucz, ivSpec);
@@ -100,9 +99,7 @@ public class AES {
 		try {
 			IvParameterSpec ivSpec = new IvParameterSpec(new byte[16]);
 
-			byte[] inBuffer = new byte[16];// na dane wejsciowe
-			byte[] outBuffer = new byte[256];// na dane wyjsciowe
-
+		
 			Cipher aesCipher = Cipher.getInstance("AES/" + trybSzyfrowania
 					+ "/NoPadding", "BC");
 			aesCipher.init(Cipher.ENCRYPT_MODE, key, ivSpec);
@@ -132,9 +129,9 @@ public class AES {
 		return null;
 	}
 
-	public static void zapiszZakodowanaWiadomoscDoPilku(byte[] kryptogram) {
+	public static void zapiszZakodowanaWiadomoscDoPilku(byte[] kryptogram, String plikZWiadomoscia) {
 
-		File kryptogramFile = new File("kryptogramZad1.txt");
+		File kryptogramFile = new File(plikZWiadomoscia);
 		FileOutputStream stream;
 		try {
 			stream = new FileOutputStream(kryptogramFile);
@@ -154,18 +151,18 @@ public class AES {
 
 	}
 
-	static String oczytZPlikuWiadomosci() {
+	static String oczytZPlikuWiadomosci(String plikZWiadomoscia) {
 
 		FileReader file;
 		BufferedReader bufferedReader;
 		String wiadomosc = "";
 		try {
-			file = new FileReader("D:\\eclipse\\Semestr4\\Graf\\vertexes.txt");
+			file = new FileReader(plikZWiadomoscia);
 			bufferedReader = new BufferedReader(file);
 			String wczytaneDane = bufferedReader.readLine();
 			do {
 				wiadomosc = wiadomosc + wczytaneDane;
-				System.out.println(wczytaneDane);
+				//System.out.println(wczytaneDane);
 				wczytaneDane = bufferedReader.readLine();
 			
 			} while (wczytaneDane != null);
