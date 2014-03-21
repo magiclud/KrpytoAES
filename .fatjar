@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Sat Mar 15 19:22:19 CET 2014
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=AES_fat.jar
+manifest.mergeall=true
+manifest.mainclass=AESMain
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=
