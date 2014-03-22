@@ -7,27 +7,41 @@ public class MusicPlayer {
 
 	public static Clip clip;
 
+	static String trybSzyfrowania = "OFB";
+	static String hasloDoKeystora = "ala ma kota";
+	static String aliasHasla = "mojAlias";
+	static String sciezkaDoKeyStore = "D:\\eclipse\\Semestr4\\AES\\keyStore.ks";
+	
+	int cipherBytes;
 	public static void main(String[] args) {
 
+		byte[] cipherBlok = MusicSzyfrowanie.przygotujDoZakodowania(MusicSzyfrowanie.pobierzKlucz(
+				sciezkaDoKeyStore, new String(aliasHasla), new String(
+						hasloDoKeystora)), trybSzyfrowania);
+		
+		
+		
 		try {
 			
 			File file = new File(
-					"D:\\eclipse\\Semestr4\\AES\\Music.wav");
+				"D:\\Pobieranie\\14.wav");
 			AudioInputStream outSteream = AudioSystem.getAudioInputStream(file);
 			clip = AudioSystem.getClip();
 			clip.open(outSteream);
-
+			
 			clip.start();
+	//clip.stop()
 
-			do {
+			//do {
 				try {
-					Thread.sleep(50);
+					Thread.sleep(5000);
+			
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
-			} while (clip.isActive());
+			//} while (clip.isActive());
 
 		} catch (LineUnavailableException e) {
 			// TODO Auto-generated catch block

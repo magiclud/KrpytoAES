@@ -103,6 +103,7 @@ public class AES {
 			Cipher aesCipher = Cipher.getInstance("AES/" + trybSzyfrowania
 					+ "/NoPadding", "BC");
 			aesCipher.init(Cipher.ENCRYPT_MODE, key, ivSpec);
+			
 			return aesCipher.doFinal(wiadomosc.getBytes());
 		} catch (InvalidKeyException e) {
 			// TODO Auto-generated catch block
