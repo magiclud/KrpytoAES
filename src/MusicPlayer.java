@@ -19,17 +19,17 @@ public class MusicPlayer {
 
 		try {
 
-			String sciezkaDoPlikuMuzycznego = "D:\\Pobieranie\\14.wav";
+			String sciezkaDoPlikuMuzycznego = "D:\\Pobieranie\\141.wav";
 			File plikMuzycznyWav = new File(sciezkaDoPlikuMuzycznego);
 			File plikZaszyfrowany = new File(zaszyfrowanyPlik);
 
-			MusicSzyfrowanie.zaszyfrujPlik(MusicSzyfrowanie.pobierzKlucz(
-					sciezkaDoKeyStore, new String(aliasHasla), new String(
-							hasloDoKeystora)), plikZaszyfrowany,
-					plikMuzycznyWav);
+//			MusicSzyfrowanie.zaszyfrujPlik(MusicSzyfrowanie.pobierzKlucz(
+//					sciezkaDoKeyStore, new String(aliasHasla), new String(
+//							hasloDoKeystora)), plikMuzycznyWav,
+//					plikMuzycznyWav);
 			MusicSzyfrowanie.dekodujPlik(MusicSzyfrowanie.pobierzKlucz(
 					sciezkaDoKeyStore, new String(aliasHasla), new String(
-							hasloDoKeystora)), plikZaszyfrowany,
+							hasloDoKeystora)),plikMuzycznyWav,
 					plikMuzycznyWav);
 
 			AudioInputStream outSteream = AudioSystem
